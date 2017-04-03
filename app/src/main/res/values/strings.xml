@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">EtisbewCommunicator</string>
+    <string name="app_name" translatable="false">Etisbew Communicator</string>
+    <string name="sensor_id">Sensor ID</string>
+    <string name="sensor_description">Sensor description</string>
+    <string name="sensor_latitude">Latitude</string>
+    <string name="sensor_longitude">Longitude</string>
+    <string name="sensor_temperature">Temperature</string>
+    <string name="sensor_relative_humidity">Relative Humidity</string>
+    <string name="create_sensor">Create Sensor</string>
 </resources>
