@@ -7,4 +7,6 @@
     <string name="sensor_temperature">Temperature</string>
     <string name="sensor_relative_humidity">Relative Humidity</string>
     <string name="create_sensor">Create Sensor</string>
+    <string name="start_generateing_readings">Start Generating Readings</string>
+    <string name="stop_generateing_readings">Stop Generating Readings</string>
 </resources>

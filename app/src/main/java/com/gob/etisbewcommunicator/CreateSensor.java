@@ -71,18 +71,6 @@ public class CreateSensor extends Fragment {
         Io io = (Io) getActivity().getApplication();
         socket = io.getSocket();
         socket.on(Socket.EVENT_CONNECT, onConnect);
-
-//        Io.getSocket().on(Socket.EVENT_CONNECT, new Emitter.Listener() {
-//            @Override
-//            public void call(Object... args) {
-//                getActivity().runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        Log.d("me", "on socket connection");
-//                    }
-//                });
-//            }
-//        });
         socket.connect();
     }
 
@@ -120,20 +108,20 @@ public class CreateSensor extends Fragment {
     private void setCreateButtonClickedListener() {
         create.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                try {
-                    JSONObject sensorData = new JSONObject();
-                    sensorData.put("id", id.getText().toString());
-                    sensorData.put("description", description.getText().toString());
-                    sensorData.put("latitude", latitude.getText().toString());
-                    sensorData.put("longitude", longitude.getText().toString());
-                    sensorData.put("temperature", temperature.getText().toString());
-                    sensorData.put("relativeHumidity", relativeHumidity.getText().toString());
+            try {
+                JSONObject sensorData = new JSONObject();
+                sensorData.put("identification", id.getText().toString());
+                sensorData.put("description", description.getText().toString());
+                sensorData.put("latitude", latitude.getText().toString());
+                sensorData.put("longitude", longitude.getText().toString());
+                sensorData.put("temperature", temperature.getText().toString());
+                sensorData.put("relativeHumidity", relativeHumidity.getText().toString());
 
-                    socket.emit("newSensorCreated", sensorData);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    throw new RuntimeException(e);
-                }
+                socket.emit("newSensorCreated", sensorData);
+            } catch (JSONException e) {
+                e.printStackTrace();
+                throw new RuntimeException(e);
+            }
             }
         });
     }
@@ -149,15 +137,14 @@ public class CreateSensor extends Fragment {
     private Emitter.Listener onConnect = new Emitter.Listener() {
         @Override
         public void call(Object... args) {
-            getActivity().runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    if(!isConnected) {
-                        Log.d("me", "connected with socket.io");
-                        isConnected = true;
-                    }
-                }
-            });
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+            if(!isConnected) {
+                isConnected = true;
+            }
+            }
+        });
         }
     };
 }

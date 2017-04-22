@@ -22,7 +22,10 @@ public class CollectionPagerAdapter extends FragmentStatePagerAdapter {
         fragments[0] = new CreateSensor();
         pageTitles[0] = "Create Sensor";
 
-        for (int i = 1; i < numberOfFragments; i++) {
+        fragments[1] = new SensorReadingGenerator();
+        pageTitles[1] = "Reading Generator";
+
+        for (int i = 2; i < numberOfFragments; i++) {
             fragments[i] = new ObjectFragment();
             Bundle args = new Bundle();
             args.putInt(ObjectFragment.ARG_OBJECT, i + 1);
